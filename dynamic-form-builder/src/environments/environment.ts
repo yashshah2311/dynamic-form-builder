@@ -3,7 +3,22 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  envName: 'local',
+  auth: {
+    protocol: 'http',
+    port: '3001',
+    apiPrefix: '/api',
+    resourcelogin: '/login',
+    genericChangePassword: '/changePassword',
+    genericForgotPassword: '/forgotPassword',
+    updateProfileDetails: '/resource/:resource_id',
+    saveUserSession: '/save/user/session',
+    updateUserSession: '/update/user/session',
+    fetchUserRole: '/user/role/:user_code',
+    getProfileDataByResourceId: '/resource/profile/:resource_id',
+    addClientHirerUser: '/resource/add/client/user/:resource_id/legal/entityId/:legal_entity_id'
+  }
 };
 
 /*
