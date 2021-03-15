@@ -10,14 +10,16 @@ export const environment = {
     port: '3001',
     apiPrefix: '/api',
     resourcelogin: '/login',
+    resourceRegister: '/register',
     genericChangePassword: '/changePassword',
-    genericForgotPassword: '/forgotPassword',
-    updateProfileDetails: '/resource/:resource_id',
-    saveUserSession: '/save/user/session',
-    updateUserSession: '/update/user/session',
-    fetchUserRole: '/user/role/:user_code',
-    getProfileDataByResourceId: '/resource/profile/:resource_id',
-    addClientHirerUser: '/resource/add/client/user/:resource_id/legal/entityId/:legal_entity_id'
+    genericForgotPassword: '/forgotPassword'
+  },
+  template:{
+    protocol: 'http',
+    port: '3001',
+    apiPrefix: '/api/templates',
+    getTemplatesByUser: '/getTemplates/:userid ',
+    resourceRegister: '/register',
   }
 };
 

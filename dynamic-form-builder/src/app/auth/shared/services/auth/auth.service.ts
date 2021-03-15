@@ -31,6 +31,17 @@ export class AuthService {
       });
   }
 
+  getRegisterResponse(body: any) {
+    const url = this.sharedService.linkGeneration(environment.auth, environment.auth.resourceRegister)
+    return this.http.post(url, body)
+      .map((response: any) => {
+        // console.log(response.json());
+        return response.json();
+      })
+      .catch((error: any) => {
+        return error.json();
+      });
+  }
 
   // handleError(error: HttpErrorResponse) {
   //   if (error.error instanceof ErrorEvent) {

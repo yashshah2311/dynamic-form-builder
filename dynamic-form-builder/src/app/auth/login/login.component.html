@@ -2,8 +2,17 @@
 <div class="container">
 
     <div class="form-group">
-      <input type="text" formControlName="email" placeholder="Please Enter Email ID" required>
-      <input type="password" formControlName="password" placeholder="Password" required>
+      <input type="text" formControlName="email" placeholder="Please Enter Email ID" [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+      <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+        <div *ngIf="formControls.email.errors.required">Email is required</div>
+      </div>
+      <div *ngIf="isSubmitted && !isEmailValid" class="help-block">
+        <div *ngIf="!isEmailValid">Email is invalid</div>
+      </div>
+      <input type="password" formControlName="password" placeholder="Password" [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+      <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+        <div *ngIf="formControls.password.errors.required">Password is required</div>
+      </div>
       <input type="submit" value="LOGIN">
     </div>
 </div>
