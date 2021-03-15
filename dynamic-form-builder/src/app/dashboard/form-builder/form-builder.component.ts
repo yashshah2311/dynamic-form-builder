@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './form-builder.component.html',
   styleUrls: ['./form-builder.component.scss']
 })
-export class FormBuilderComponent implements OnInit {
+export class FormBuilderComponent {
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+
 
 }

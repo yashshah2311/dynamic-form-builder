@@ -13,6 +13,13 @@ export const environment = {
     resourceRegister: '/register',
     genericChangePassword: '/changePassword',
     genericForgotPassword: '/forgotPassword'
+  },
+  template:{
+    protocol: 'http',
+    port: '3001',
+    apiPrefix: '/api/templates',
+    getTemplatesByUser: '/getTemplates/:userid ',
+    resourceRegister: '/register',
   }
 };
 
