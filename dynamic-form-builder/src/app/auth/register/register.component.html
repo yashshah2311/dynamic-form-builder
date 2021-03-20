@@ -1,3 +1,7 @@
+<div class="topContainer">
+  <p>Welcome to Dynamic Form Builder</p>
+</div>
+
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <h1>Register</h1>
@@ -34,8 +38,9 @@
     </div>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
   </div>
-  
-  <div class="container-signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div>
 </form>
+
+<div class="bottomContainer">
+  <p>Already registered ?</p>
+  <a routerLink="/auth/login" class="nav-link">LOGIN</a>
+</div>
