@@ -9,7 +9,7 @@ body {
   /* style the container */
   .container {
     width: 50%;
-    height: 300px;
+    height: 350px;
     margin-right: -25%;
     margin-left: 25%;
     background-color: rgba(194, 221, 229, 0.904);
@@ -46,6 +46,12 @@ body {
     border-bottom-right-radius: 25px;
     box-shadow: 0 0 30px rgba(26, 25, 25, 0.1);
     margin-bottom: 400px;
+  }
+
+  .help-block{
+    color: red;
+    font-size: 20px;
+    margin-left: 10%;
   }
   
   /* style inputs and link buttons */

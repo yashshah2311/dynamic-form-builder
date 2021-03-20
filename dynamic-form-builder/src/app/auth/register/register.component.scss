@@ -48,6 +48,12 @@ body {
     margin-bottom: 400px;
   }
 
+  .help-block{
+    color: red;
+    font-size: 20px;
+    margin-left: 15%;
+  }
+
   h1, p{
     text-align: center;
   }
@@ -70,7 +76,7 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.596);
     width: 70%;
     margin-left: 15%;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
   }
 
   input[type=submit] {
