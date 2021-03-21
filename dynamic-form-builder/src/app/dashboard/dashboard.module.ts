@@ -4,9 +4,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CardModule } from 'primeng/card';
 
 import { HomeComponent } from './home/home.component';
+import { ShowTemplateComponent } from './show-template/show-template.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ShowTemplateComponent],
   exports: [
     HomeComponent
   ],

@@ -1,0 +1,11 @@
+<!-- <p>show-template works!</p> -->
+<div class="show-form {{data['formColor']}}">
+    <div class="">
+        {{data['formHeading']}}
+    </div>
+    <ng-container *ngFor="let formDetails of formDetails">
+        <div>{{formDetails.order}}. {{formDetails.name}}
+            <input type="{{formDetails.type}}" placeholder="{{formDetails.placeholder}}"/>
+        </div>
+    </ng-container>
+</div>

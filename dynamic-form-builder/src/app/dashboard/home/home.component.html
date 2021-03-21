@@ -1,9 +1,16 @@
-<div class="forms">
-    <ng-container *ngFor="let formDetails of dataform" class="datForm">
-        <p-card header="{{formDetails['formHeading']}}" (click)="clicked(formDetails['templateid'])" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
-            <ng-template pTemplate="header">
-            </ng-template>
-            <p>: {{formDetails['templateid']}}</p>
-        </p-card>
-    </ng-container>
+<div class="forms" *ngIf="!isDataformEmpty">
+    <!-- <div > -->
+        <ng-container *ngFor="let formDetails of dataform" class="datForm">
+            <a [routerLink]="['/dashboard/show-template', formDetails['templateid']]">
+
+            <p-card header="{{formDetails['formHeading']}}" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+                <ng-template pTemplate="header">
+                </ng-template>
+                <!-- <p>: {{formDetails['templateid']}}</p> -->
+            </p-card> </a>
+        </ng-container>
+    <!-- </div> -->
 </div>
+<span *ngIf="isDataformEmpty">
+    Hererere
+</span>
