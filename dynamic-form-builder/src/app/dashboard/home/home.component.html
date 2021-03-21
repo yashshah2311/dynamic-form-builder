@@ -1,3 +1,4 @@
+<div class="forms">
     <ng-container *ngFor="let formDetails of dataform" class="datForm">
         <p-card header="{{formDetails['formHeading']}}" (click)="clicked(formDetails['templateid'])" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
             <ng-template pTemplate="header">
@@ -5,3 +6,4 @@
             <p>: {{formDetails['templateid']}}</p>
         </p-card>
     </ng-container>
+</div>

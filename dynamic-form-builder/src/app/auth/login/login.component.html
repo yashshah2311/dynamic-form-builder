@@ -1,3 +1,7 @@
+<div class="topContainer">
+  <p>Welcome to Dynamic Form Builder</p>
+</div>
+
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 <div class="container">
 
@@ -17,3 +21,8 @@
     </div>
 </div>
 </form>
+
+<div class="bottomContainer">
+  <p>Create an account ?</p>
+  <a routerLink="/auth/register" class="nav-link">REGISTER</a>
+</div>

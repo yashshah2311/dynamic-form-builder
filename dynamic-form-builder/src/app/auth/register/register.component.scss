@@ -12,9 +12,46 @@ body {
     width: 50%;
     margin-right: -25%;
     margin-left: 25%;
-    background-color: rgba(240, 203, 199, 0.904);
+    background-color: rgba(194, 221, 229, 0.904);
     padding: 20px 0 30px 0;
     box-shadow: 0 0 30px rgba(26, 25, 25, 0.1);
+  }
+
+  .topContainer {    
+    margin-top: 200px;
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    width: 50%;
+    height: 130px;
+    margin-left: 25%;
+    background-color:#ca7a11;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    box-shadow: 0 0 30px rgba(26, 25, 25, 0.1);
+  }
+
+  .bottomContainer {
+    padding-top: 1px;
+    width: 50%;
+    height: 110px;
+    margin-left: 25%;
+    text-align: center;
+    background-color: #ca7a11;
+    color: white;
+    font-size: 20px;
+    border-radius: 0px 0px 4px 4px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0 0 30px rgba(26, 25, 25, 0.1);
+    margin-bottom: 400px;
+  }
+
+  .help-block{
+    color: red;
+    font-size: 20px;
+    margin-left: 15%;
   }
 
   h1, p{
@@ -39,7 +76,27 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.596);
     width: 70%;
     margin-left: 15%;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
+  }
+
+  input[type=submit] {
+    background-color: #075e86;
+    cursor: pointer;
+    width: 80%;
+    color: white;
+    margin-top: 20px;
+    margin-left: 10%;
+    height: 50px;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #316a85;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
   }
   
   input[type=text]:focus, input[type=password]:focus {
