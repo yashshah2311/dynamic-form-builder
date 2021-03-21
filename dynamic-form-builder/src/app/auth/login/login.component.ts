@@ -38,7 +38,6 @@ export class LoginComponent {
         // console.log(response);
         if (response && response.error && response.error.length === 0) {
           // console.log(response);
-          console.log(response);
           sessionStorage.setItem('userid', response.data['userid']);
           this.sharedService.setSession(true);
           // localStorage.setItem('userid', response.data['userid']);

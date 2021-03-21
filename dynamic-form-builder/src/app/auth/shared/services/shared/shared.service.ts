@@ -10,7 +10,7 @@ export class SharedService {
 
   constructor() { }
   setSession(value: any) {
-    console.log(value)
+    // console.log(value)
     this.authSubject.next(value);
   }
   isLoggedIn() {

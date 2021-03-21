@@ -19,7 +19,7 @@ export const environment = {
     port: '3001',
     apiPrefix: '/api/templates',
     getTemplatesByUser: '/getTemplates/:userid ',
-    resourceRegister: '/register',
+    getTemplate: '/getTemplate/:templateid'
   }
 };
 
