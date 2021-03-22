@@ -11,6 +11,7 @@
         </ng-container>
     <!-- </div> -->
 </div>
-<span *ngIf="isDataformEmpty">
-    Hererere
+<span *ngIf="!isDataformEmpty">
+    <h1>You do not have any forms !!!</h1>
+    <button><a routerLink="/dashboard/create-form" class="nav-link">CREATE NEW FORM</a></button>
 </span>

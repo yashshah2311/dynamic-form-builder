@@ -1,11 +1,15 @@
 <!-- <p>show-template works!</p> -->
 <div class="show-form {{data['formColor']}}">
-    <div class="">
+    <div class="formDetails">
         {{data['formHeading']}}
     </div>
     <ng-container *ngFor="let formDetails of formDetails">
-        <div>{{formDetails.order}}. {{formDetails.name}}
-            <input type="{{formDetails.type}}" placeholder="{{formDetails.placeholder}}"/>
+        <div class="label">{{formDetails.order}}. {{formDetails.name}}
+        </div>
+        <br>
+        <div>
+            <input type="{{formDetails.type}}" placeholder="{{formDetails.placeholder}}"  class="input"/>
         </div>
     </ng-container>
+    <button><a routerLink="/dashboard/home" class="nav-link">BACK</a></button>
 </div>
