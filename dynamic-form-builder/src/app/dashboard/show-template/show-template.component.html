@@ -4,11 +4,38 @@
         {{data['formHeading']}}
     </div>
     <ng-container *ngFor="let formDetails of formDetails">
-        <div class="label">{{formDetails.order}}. {{formDetails.name}}
+        <div class="label" for="formDetails.type">{{formDetails.order}}. {{formDetails.name}}
         </div>
         <br>
-        <div>
-            <input type="{{formDetails.type}}" placeholder="{{formDetails.placeholder}}"  class="input"/>
+        <div *ngIf="!formDetails.options && !(formDetails.type === 'textarea')">
+            <input type="{{formDetails.type}}" ng-model="formDetails.name" name="{{formDetails.name}}" id="{{formDetails.name}}_{{formDetails.order}}" ng-required="formDetails.required" placeholder="{{formDetails.placeholder}}"  class="input"/>
+        </div>
+        <div *ngIf="!formDetails.options && (formDetails.type === 'textarea')">
+            <textarea class="input" ng-model="formDetails.name" name="{{formDetails.name}}" id="{{formDetails.name}}_{{formDetails.order}}" ng-required="formDetails.required" placeholder="{{formDetails.placeholder}}"></textarea> 
+        </div>
+        <div *ngIf="formDetails.options && formDetails.type === 'radio'">
+            <span *ngFor="let option of formDetails.options">
+            <input class="input" type="{{formDetails.type}}" ng-required="formDetails.required" ng-model="formdetails.name" value="option.value" name="{{option.name}}" id="{{option.name}}_{{option.order}}">{{option.name}}
+            <!-- <input type="radio" ng-model="myVar" value="tuts">Tutorials -->
+            <!-- <input type="radio" ng-model="myVar" value="cars">Cars -->
+            </span>
+        </div>
+        <div class="form-group" *ngIf="formDetails.options && formDetails.type === 'select'">
+            <select class="form-control input" id="{{formDetails.name}}_{{formDetails.order}}" ng-model="formDetails.name" required="{{formDetails.required}}">
+              <option *ngFor="let opt of formDetails.options" [value]="opt.value">{{opt.name}}</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="formDetails.options && formDetails.type === 'multiple'">
+            <select class="form-control input" id="{{formDetails.name}}_{{formDetails.order}}" ng-model="formDetails.name" required="{{formDetails.required}}" multiple>
+              <option *ngFor="let opt of formDetails.options" [value]="opt.value">{{opt.name}}</option>
+            </select>
+        </div>
+        <div *ngIf="formDetails.options && formDetails.type === 'checkboxes'">
+            <span *ngFor="let option of formDetails.options">
+            <input class="input" type="checkbox" ng-required="formDetails.required" ng-model="option.name" value="option.value" name="{{option.name}}" id="{{option.name}}_{{option.order}}">{{option.name}}
+            <!-- <input type="radio" ng-model="myVar" value="tuts">Tutorials -->
+            <!-- <input type="radio" ng-model="myVar" value="cars">Cars -->
+            </span>
         </div>
     </ng-container>
     <button><a routerLink="/dashboard/home" class="nav-link">BACK</a></button>
