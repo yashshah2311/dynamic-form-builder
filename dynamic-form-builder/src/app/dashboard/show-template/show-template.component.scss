@@ -5,6 +5,46 @@
     text-align: -webkit-center;
 }
 
+.formDetails {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 50px
+}
+
+.label {
+    float: left;
+    margin-bottom: 10px
+}
+
+.input {
+    width: 500px;
+    height: 30px;
+    margin-bottom: 30px
+}
+
+button {
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: orange;
+    width: 100px
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
 .blue{
     background-color: lightblue;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    margin-top: 250px;
+    margin-bottom: 250px;
+    padding: 70px;
+    font-size: 18px;
+    border-radius: 10px
 }

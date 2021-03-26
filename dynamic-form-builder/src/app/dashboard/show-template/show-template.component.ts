@@ -9,8 +9,8 @@ import { ShowTemplateService } from './show-template.service';
 })
 export class ShowTemplateComponent implements OnInit {
   templateId: any = "";
-  data: any;
-  formDetails: any;
+  data: any = [];
+  formDetails: any = [];
   constructor(private _Activatedroute:ActivatedRoute,
     private showTemplateService: ShowTemplateService) { }
 
@@ -25,7 +25,10 @@ export class ShowTemplateComponent implements OnInit {
     this.showTemplateService.getTemplate(this.templateId).subscribe(async (response: any) => {        
       if (response && response.error && response.error.length === 0) {
         this.data = response.data;
+        // console.log(this.data);
+
         this.formDetails = response.data['formDetails'];
+        
         // console.log(response.data['formDetails']);
       }
     },
