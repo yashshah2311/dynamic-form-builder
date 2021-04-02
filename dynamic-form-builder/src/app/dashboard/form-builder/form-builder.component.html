@@ -1,1 +1,250 @@
 <p>form-builder works!</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary animated fadeInLeft">
+				<div class="panel-heading">
+					<h3 class="panel-title">Form Builder</h3>
+				</div>
+				<div class="panel-body" *ngIf="!showCreateFields" style="height:400px;overflow:auto;">
+					<form class="form" [formGroup]="createFormHeader" (ngSubmit)="saveHeader()">
+						<div class="form-group">
+							<label for="newField-name">Header:</label> <input type="text"
+								class="form-control" id="Header" formControlName="formHeading" [ngClass]="{ 'has-error': formHeaderControls.formHeading.errors }" ng-model="formHeading" ng:required>
+								<div *ngIf="formHeaderControls.formHeading.errors" class="help-block">
+									<div *ngIf="formHeaderControls.formHeading.errors.required">Header is required</div>
+								  </div>
+						</div>
+
+						<div class="form-group">
+							<label for="formColor">Form Color:</label> <select
+								class="form-control" formControlName="formColor" id="formColor" [ngClass]="{ 'has-error': formHeaderControls.formColor.errors }" ng-model="formColor" ng:required>
+								<option value="default" selected>default</option>
+								<option value="red">Red</option>
+								<option value="blue">Blue</option>
+								<option value="orange">Orange</option>
+								<option value="yellow">Yellow</option>
+								<!-- <option value="header">Heading</option> -->
+							</select>
+							<div *ngIf="formHeaderControls.formColor.errors" class="help-block">
+								<div *ngIf="formHeaderControls.formColor.errors.required">Header is required</div>
+							  </div>
+						</div>
+
+						<div>
+							<input class="btn btn-warning"type="submit" value="Next">
+						</div>
+					</form>
+				</div>
+
+				<div class="panel-body" *ngIf="showCreateFields" style="height:400px;overflow:auto;">
+					<form class="form" [formGroup]="createForm" (ngSubmit)="saveField()">
+						<div class="form-group">
+							<label for="newField-name">Field Name:</label> <input type="text"
+								class="form-control" id="newField-name" formControlName="name" ng-model="name" ng:required>
+						</div>
+						<div class="form-group">
+							<label>Required: <input
+								type="checkbox" id="newField-required"
+								formControlName="required" ng-model="required">
+							</label>
+						</div>
+						
+						<div class="form-group">
+							<label for="newField-order">Order Weight:</label> <input
+								class="form-control" type="number" formControlName="order" id="newField-order" ng-model="order"
+								value="0" ng:required placeholder="0">
+						</div>
+						<div class="form-group">
+							<label for="newField-type">Field Type:</label> <select
+								class="form-control" formControlName="type" id="newField-type" ng-model="type" ng:required>
+								<option value="text" selected>Text</option>
+								<option value="radio">Radio Buttons</option>
+								<option value="select">Drop Menu (Select)</option>
+								<option value="multiple">Multi-Select</option>
+								<option value="checkbox">Toggle (Checkbox)</option>
+								<option value="checkboxes">Checkboxes</option>
+								<option value="textarea">Paragraph(s)</option>
+								<option value="number">Number</option>
+								<option value="url">Url</option>
+								<option value="phone">Phone</option>
+								<option value="email">Email</option>
+								<!-- <option value="header">Heading</option> -->
+							</select>
+						</div>
+						<!-- {{type}} -->
+						<div [ngSwitch]="typeSwitch(createForm.value['type'])">
+							<!-- {{type}} -->
+							<fieldset *ngSwitchCase="'multiple'">
+								<!-- <legend> -->
+									<div>
+										<button class="btn btn-primary btn-xs" type="button" (click)="addSellingPoint()">Add Options</button>
+									</div>
+								<!-- </legend> -->
+								<div formArrayName="options">
+								<div class="panel panel-primary" *ngFor="let option of options.controls; let pointIndex=index" [formGroupName]="pointIndex">
+									<div class="panel-body">
+										<b><i>Option:</i></b>
+										<button class="btn btn-danger btn-xs" type="button" (click)="deleteSellingPoint(pointIndex)">Remove</button>
+									<!-- </div> -->
+										<div class="form-group">	
+											Name: <input class="form-control" type="text" formControlName="name" ng-model="option.name"
+													ng-required>
+											Value: <input class="form-control" type="text"
+													ng-model="option.value" formControlName="value">
+											Order: <input class="form-control" type="number"
+												ng-model="order" formControlName="order">
+										</div>
+									</div>
+								</div>
+								</div>
+							</fieldset>
+							<span *ngSwitchCase="'checkbox'"></span> 
+							<div *ngSwitchDefault class="form-group">
+								<label for="newField-placeholder">Instructions:</label> <input
+									class="form-control" type="text" id="newField-placeholder"
+									ng-model="placeholder" formControlName="placeholder">
+							</div>
+
+							<!-- <span
+								ng-switch-when="header"></span>  -->
+						</div>
+						<div>
+							<input class="btn btn-warning"type="submit" value="Create New Field">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+		<div class="panel panel-primary animated fadeInRight" >
+			<div class="panel-heading">
+				<h3 class="panel-title">Form Preview</h3>
+			</div>
+		<div class="show-form {{color}}">
+			<div class="formDetails">
+				{{header}}
+			</div>
+			<ng-container *ngFor="let formDetails of newField">
+				<div class="label" for="formDetails.type">{{formDetails.order}}. {{formDetails.name}}
+					<!-- <button class="btn btn-warning btn-xs" (click)="editField(formDetails)">Edit</button> -->
+					<button class="btn btn-danger btn-xs" (click)="splice(formDetails, newField)">Remove</button>
+				</div>
+				<br>
+				<div *ngIf="!formDetails.options && !(formDetails.type === 'textarea')">
+					<input type="{{formDetails.type}}" ng-model="formDetails.name" name="{{formDetails.name}}" id="{{formDetails.name}}_{{formDetails.order}}" ng-required="formDetails.required" placeholder="{{formDetails.placeholder}}"  class="input"/>
+				</div>
+				<div *ngIf="!formDetails.options && (formDetails.type === 'textarea')">
+					<textarea class="input" ng-model="formDetails.name" name="{{formDetails.name}}" id="{{formDetails.name}}_{{formDetails.order}}" ng-required="formDetails.required" placeholder="{{formDetails.placeholder}}"></textarea> 
+				</div>
+				<div *ngIf="formDetails.options && formDetails.type === 'radio'">
+					<span *ngFor="let option of formDetails.options">
+					<input class="input" type="{{formDetails.type}}" ng-required="formDetails.required" ng-model="formdetails.name" value="option.value" name="{{option.name}}" id="{{option.name}}_{{option.order}}">{{option.name}}
+					<!-- <input type="radio" ng-model="myVar" value="tuts">Tutorials -->
+					<!-- <input type="radio" ng-model="myVar" value="cars">Cars -->
+					</span>
+				</div>
+				<div class="form-group" *ngIf="formDetails.options && formDetails.type === 'select'">
+					<select class="form-control input" id="{{formDetails.name}}_{{formDetails.order}}" ng-model="formDetails.name" required="{{formDetails.required}}">
+					  <option *ngFor="let opt of formDetails.options" [value]="opt.value">{{opt.name}}</option>
+					</select>
+				</div>
+				<div class="form-group" *ngIf="formDetails.options && formDetails.type === 'multiple'">
+					<select class="form-control input" id="{{formDetails.name}}_{{formDetails.order}}" ng-model="formDetails.name" required="{{formDetails.required}}" multiple>
+					  <option *ngFor="let opt of formDetails.options" [value]="opt.value">{{opt.name}}</option>
+					</select>
+				</div>
+				<div *ngIf="formDetails.options && formDetails.type === 'checkboxes'">
+					<span *ngFor="let option of formDetails.options">
+					<input class="input" type="checkbox" ng-required="formDetails.required" ng-model="option.name" value="option.value" name="{{option.name}}" id="{{option.name}}_{{option.order}}">{{option.name}}
+					<!-- <input type="radio" ng-model="myVar" value="tuts">Tutorials -->
+					<!-- <input type="radio" ng-model="myVar" value="cars">Cars -->
+					</span>
+				</div>
+			</ng-container>
+		</div>	
+		</div>
+	</div>
+		<!-- <div class="col-md-6">
+			<div class="panel panel-primary animated fadeInRight" >
+				<div class="panel-heading">
+					<h3 class="panel-title">Form Preview</h3>
+				</div>
+				<div class="panel-body" style="height:400px;overflow:auto;">
+					<div ng-repeat="field in fields | orderBy:'order'">
+						<ng-switch on="field.type">
+						<h3 ng-switch-when="header" class="animated fadeInRight">
+							field.order field.name
+							<button class="btn btn-warning btn-xs" ng-click="editField(field)">Edit</button>
+							<button class="btn btn-danger btn-xs" ng-click="splice(field, fields)">Remove</button>
+						</h3>
+						<div ng-switch-default class="input field.type"
+							ng-class="field.required && 'required'">
+							<div class="form-group">
+								<label>
+									field.order . field.name 
+									<button class="btn btn-warning btn-xs" ng-click="editField(field)">Edit</button>
+									<button class="btn btn-danger btn-xs" ng-click="splice(field, fields)">Remove</button>	
+								</label>
+							
+								<ng-switch on="field.type"> 
+									<input class="form-control animated fadeInRight" ng-switch-default
+										type="field.type" ng-model="field.value"
+										ng-bind-attr="{required:'field.required'}"
+										value="field.value" placeholder="field.placeholder">
+									<input ng-switch-when="checkbox" type="checkbox" class="animated fadeInRight"
+										ng-model="field.value" value="field.value" id="field"
+										placeholder="field.instructions"> 
+									<textarea class="form-control animated fadeInRight"
+										ng-switch-when="textarea" ng-model="field.value"
+										placeholder="field.instructions">field.value
+									</textarea> 
+									<select class="form-control animated fadeInRight"
+										ng-switch-when="select" ng-model="field.value">
+										<option ng-repeat="option in field.options"
+											value="option.value">option.name
+										</option>
+									</select> 
+									<select class="form-control animated fadeInRight" 
+										ng-switch-when="multiple" ng-model="field.value" multiple>
+										<option ng-repeat="option in field.options"
+											value="option.value">option.name
+										</option>
+									</select>
+									<fieldset ng-switch-when="radio">
+										<label ng-repeat="option in field.options"> 
+											<input class="animated fadeInRight"
+												type="radio" ng-model="field.value" value="option.value">
+											option.name
+										</label>
+									</fieldset>
+									<fieldset ng-switch-when="checkboxes">
+										<label ng-repeat="option in field.options"> 
+											<input class="animated fadeInRight"
+												type="checkbox" ng-model="field.value[tokenize(option.name)]"
+												value="option.value"> option.name
+										</label>
+									</fieldset>
+								</ng-switch>
+							</div>
+						</div>
+						</ng-switch>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-warning animated fadeInUp">
+				<div class="panel-heading">
+					<h3 class="panel-title">JSON Data</h3>
+				</div>
+				<div class="panel-body" style="height:100px;overflow:auto;">
+					{{newField | json}}
+					<button class="btn btn-danger btn-xs" type="button" (click)="saveTemplate()">Save Template</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
