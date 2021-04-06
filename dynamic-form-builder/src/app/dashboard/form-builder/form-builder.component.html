@@ -1,15 +1,17 @@
-<p>form-builder works!</p>
+
+<body>
+    <p>form-builder works!</p>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-6" id="form-builder">
 			<div class="panel panel-primary animated fadeInLeft">
 				<div class="panel-heading">
-					<h3 class="panel-title">Form Builder</h3>
+					<h3 class="panel-title" id="panel-title">Form Builder</h3>
 				</div>
 				<div class="panel-body" *ngIf="!showCreateFields" style="height:400px;overflow:auto;">
 					<form class="form" [formGroup]="createFormHeader" (ngSubmit)="saveHeader()">
 						<div class="form-group">
-							<label for="newField-name">Header:</label> <input type="text"
+							<label for="newField-name" class="form-header">Header:</label> <input type="text"
 								class="form-control" id="Header" formControlName="formHeading" [ngClass]="{ 'has-error': formHeaderControls.formHeading.errors }" ng-model="formHeading" ng:required>
 								<div *ngIf="formHeaderControls.formHeading.errors" class="help-block">
 									<div *ngIf="formHeaderControls.formHeading.errors.required">Header is required</div>
@@ -17,7 +19,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="formColor">Form Color:</label> <select
+							<label for="formColor" class="formColor">Form Color:</label> <select
 								class="form-control" formControlName="formColor" id="formColor" [ngClass]="{ 'has-error': formHeaderControls.formColor.errors }" ng-model="formColor" ng:required>
 								<option value="default" selected>default</option>
 								<option value="red">Red</option>
@@ -27,7 +29,7 @@
 								<!-- <option value="header">Heading</option> -->
 							</select>
 							<div *ngIf="formHeaderControls.formColor.errors" class="help-block">
-								<div *ngIf="formHeaderControls.formColor.errors.required">Header is required</div>
+								<div *ngIf="formHeaderControls.formColor.errors.required">Form Color is required</div>
 							  </div>
 						</div>
 
@@ -40,10 +42,10 @@
 				<div class="panel-body" *ngIf="showCreateFields" style="height:400px;overflow:auto;">
 					<form class="form" [formGroup]="createForm" (ngSubmit)="saveField()">
 						<div class="form-group">
-							<label for="newField-name">Field Name:</label> <input type="text"
+							<label for="newField-name" class="newField-name">Field Name:</label> <input type="text"
 								class="form-control" id="newField-name" formControlName="name" ng-model="name" ng:required>
 						</div>
-						<div class="form-group">
+						<div class="form-group" id="formGroup">
 							<label>Required: <input
 								type="checkbox" id="newField-required"
 								formControlName="required" ng-model="required">
@@ -51,18 +53,18 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="newField-order">Order Weight:</label> <input
+							<label for="newField-order" class="newField-order">Order Weight:</label> <input
 								class="form-control" type="number" formControlName="order" id="newField-order" ng-model="order"
 								value="0" ng:required placeholder="0">
 						</div>
 						<div class="form-group">
-							<label for="newField-type">Field Type:</label> <select
+							<label for="newField-type" class="newField-type">Field Type:</label> <select
 								class="form-control" formControlName="type" id="newField-type" ng-model="type" ng:required>
 								<option value="text" selected>Text</option>
 								<option value="radio">Radio Buttons</option>
 								<option value="select">Drop Menu (Select)</option>
 								<option value="multiple">Multi-Select</option>
-								<option value="checkbox">Toggle (Checkbox)</option>
+								<option value="checkbox" class="checkbox">Toggle (Checkbox)</option>
 								<option value="checkboxes">Checkboxes</option>
 								<option value="textarea">Paragraph(s)</option>
 								<option value="number">Number</option>
@@ -78,14 +80,14 @@
 							<fieldset *ngSwitchCase="'multiple'">
 								<!-- <legend> -->
 									<div>
-										<button class="btn btn-primary btn-xs" type="button" (click)="addSellingPoint()">Add Options</button>
+										<button class="btn btn-primary btn-xs" type="button" (click)="addSellingPoint()" id="addOptionButton">Add Options</button>
 									</div>
 								<!-- </legend> -->
 								<div formArrayName="options">
 								<div class="panel panel-primary" *ngFor="let option of options.controls; let pointIndex=index" [formGroupName]="pointIndex">
 									<div class="panel-body">
 										<b><i>Option:</i></b>
-										<button class="btn btn-danger btn-xs" type="button" (click)="deleteSellingPoint(pointIndex)">Remove</button>
+										<button class="btn btn-danger btn-xs" type="button" (click)="deleteSellingPoint(pointIndex)" id="removeButton">Remove</button>
 									<!-- </div> -->
 										<div class="form-group">	
 											Name: <input class="form-control" type="text" formControlName="name" ng-model="option.name"
@@ -101,7 +103,7 @@
 							</fieldset>
 							<span *ngSwitchCase="'checkbox'"></span> 
 							<div *ngSwitchDefault class="form-group">
-								<label for="newField-placeholder">Instructions:</label> <input
+								<label for="newField-placeholder" class="newField-placeholder">Instructions:</label> <input
 									class="form-control" type="text" id="newField-placeholder"
 									ng-model="placeholder" formControlName="placeholder">
 							</div>
@@ -110,16 +112,16 @@
 								ng-switch-when="header"></span>  -->
 						</div>
 						<div>
-							<input class="btn btn-warning"type="submit" value="Create New Field">
+							<input class="btn btn-warning"type="submit" value="Create New Field" id="create-new-field">
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
-		<div class="panel panel-primary animated fadeInRight" >
+		<div class="col-md-6" id="formPreview" *ngIf="showCreateFields">
+		<div class="panel panel-primary animated fadeInRight" id="panel-primary1">
 			<div class="panel-heading">
-				<h3 class="panel-title">Form Preview</h3>
+				<h3 class="panel-title" id="panel-title2">Form Preview</h3>
 			</div>
 		<div class="show-form {{color}}">
 			<div class="formDetails">
@@ -128,7 +130,7 @@
 			<ng-container *ngFor="let formDetails of newField">
 				<div class="label" for="formDetails.type">{{formDetails.order}}. {{formDetails.name}}
 					<!-- <button class="btn btn-warning btn-xs" (click)="editField(formDetails)">Edit</button> -->
-					<button class="btn btn-danger btn-xs" (click)="splice(formDetails, newField)">Remove</button>
+					<button class="btn btn-danger btn-xs" (click)="splice(formDetails, newField)" id="removeButton">Remove</button>
 				</div>
 				<br>
 				<div *ngIf="!formDetails.options && !(formDetails.type === 'textarea')">
@@ -146,12 +148,12 @@
 				</div>
 				<div class="form-group" *ngIf="formDetails.options && formDetails.type === 'select'">
 					<select class="form-control input" id="{{formDetails.name}}_{{formDetails.order}}" ng-model="formDetails.name" required="{{formDetails.required}}">
-					  <option *ngFor="let opt of formDetails.options" [value]="opt.value">{{opt.name}}</option>
+					  <option *ngFor="let opt of formDetails.options" [value]="opt.value" class="option">{{opt.name}}</option>
 					</select>
 				</div>
 				<div class="form-group" *ngIf="formDetails.options && formDetails.type === 'multiple'">
 					<select class="form-control input" id="{{formDetails.name}}_{{formDetails.order}}" ng-model="formDetails.name" required="{{formDetails.required}}" multiple>
-					  <option *ngFor="let opt of formDetails.options" [value]="opt.value">{{opt.name}}</option>
+					  <option *ngFor="let opt of formDetails.options" [value]="opt.value" class="option">{{opt.name}}</option>
 					</select>
 				</div>
 				<div *ngIf="formDetails.options && formDetails.type === 'checkboxes'">
@@ -163,7 +165,7 @@
 				</div>
 			</ng-container>
 		</div>	
-		</div>
+		</div><br>
 	</div>
 		<!-- <div class="col-md-6">
 			<div class="panel panel-primary animated fadeInRight" >
@@ -234,17 +236,32 @@
 			</div>
 		</div> -->
 	</div>
-	<div class="row">
+	<br><br>
+	<!-- <div class="row" id="row" *ngIf="showCreateFields">
 		<div class="col-md-12">
 			<div class="panel panel-warning animated fadeInUp">
 				<div class="panel-heading">
-					<h3 class="panel-title">JSON Data</h3>
-				</div>
-				<div class="panel-body" style="height:100px;overflow:auto;">
+					<h3 class="panel-title" id="JSON">JSON Data</h3>
+				</div><br>
+				<div class="panel-body" style="height:100px;overflow:auto;" id="save-template-body">
 					{{newField | json}}
-					<button class="btn btn-danger btn-xs" type="button" (click)="saveTemplate()">Save Template</button>
+					<button class="btn btn-danger btn-xs" type="button" (click)="saveTemplate()" id="save-template">Save Template</button>
 				</div>
+			</div>
+		</div>
+	</div> -->
+</div>
+<div class="row" id="row" *ngIf="showCreateFields">
+	<div class="col-md-12">
+		<div class="panel panel-warning animated fadeInUp">
+			<div class="panel-heading">
+				<h3 class="panel-title" id="JSON">JSON Data</h3>
+			</div><br>
+			<div class="panel-body" style="height:100px;overflow:auto;" id="save-template-body">
+				{{newField | json}}
+				<button class="btn btn-danger btn-xs" type="button" (click)="saveTemplate()" id="save-template">Save Template</button>
 			</div>
 		</div>
 	</div>
 </div>
+</body>
