@@ -34,7 +34,7 @@ export class RegisterComponent {
 
   onSubmit() {
     const formData = this.registerForm.value;
-    // console.log(formData);
+    
     const body = { data: formData };
     this.isSubmitted = true;
     if(this.registerForm.invalid){
@@ -52,14 +52,14 @@ export class RegisterComponent {
           throw error;
         });
     }
-    // console.log(formData);
+    
   }
 
   validateEmail() {
     const formData = this.registerForm.value;
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(formData.email)) {
-      // console.log("---------333");
+      
       this.isEmailValid = false;
       return false;
     }

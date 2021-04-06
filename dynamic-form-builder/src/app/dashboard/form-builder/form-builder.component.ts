@@ -66,15 +66,15 @@ export class FormBuilderComponent {
 
   saveHeader(){
     const formData = this.createFormHeader.value;
-    // console.log(formData);
+    
     this.header = formData['formHeading'];
     this.color = formData['formColor']; 
     if(this.createFormHeader.invalid){
       return;
     }
     if(this.createFormHeader.valid){
-      // console.log(this.header);
-      // console.log(this.color);
+      
+      
       this.showCreateFields = true;
     }   
   }
@@ -87,7 +87,7 @@ export class FormBuilderComponent {
   typeSwitch(type: any) {
 		/*if (angular.Array.indexOf(['checkboxes','select','radio'], type) === -1)
 			return type;*/
-    // console.log(type);
+    
 		if (type == 'checkboxes')
 			return 'multiple';
 		if (type == 'select')
@@ -113,7 +113,7 @@ export class FormBuilderComponent {
       formHeading: this.header,
       formDetails: this.newField
     };
-    // console.log(formData);
+    
     const body = { data: formData };
     if (formData['formHeading'] !== "") {
 
