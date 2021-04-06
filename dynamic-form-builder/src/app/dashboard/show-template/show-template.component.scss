@@ -6,20 +6,44 @@
 }
 
 .formDetails {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 50px
 }
 
 .label {
     float: left;
-    margin-bottom: 10px
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    line-height: 25px;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
-.input {
-    width: 500px;
+.input, .form-control input {
+    width: 600px;
     height: 30px;
-    margin-bottom: 30px
+    margin-bottom: 20px;
+    flex: 0 0 200px;
+    // margin-right: -100px;
+}
+
+[type = "checkbox"] {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    vertical-align: middle;
+    margin-left: -500px;
+    word-wrap: break-word;
+    line-height: inherit;
+    padding-bottom: 0px;
+}
+
+[name = 'option.value']{
+    display: block;
+    margin-left: -500px;
 }
 
 button {
@@ -28,7 +52,9 @@ button {
     padding: 5px;
     border-radius: 10px;
     background-color: orange;
-    width: 100px
+    width: 100px;
+    margin-right: 45%;
+    margin-top: 10px;
 }
 
 a {
@@ -45,6 +71,55 @@ a {
     margin-top: 250px;
     margin-bottom: 250px;
     padding: 70px;
-    font-size: 18px;
+    font-size: 20px;
+    direction: ltr;
     border-radius: 10px
+}
+
+.red{
+    background-color: rgb(219, 57, 57);
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    margin-top: 250px;
+    margin-bottom: 250px;
+    padding: 70px;
+    font-size: 20px;
+    direction: ltr;
+    border-radius: 10px
+}
+
+.orange{
+    background-color: rgb(235, 75, 235);
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    margin-top: 250px;
+    margin-bottom: 250px;
+    padding: 70px;
+    font-size: 20px;
+    direction: ltr;
+    border-radius: 10px
+}
+
+.yellow{
+    background-color: rgb(233, 233, 77);
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    margin-top: 250px;
+    margin-bottom: 250px;
+    padding: 70px;
+    font-size: 20px;
+    direction: ltr;
+    border-radius: 10px
+}
+
+[ng-required]::before {
+    content: "*";
+    color: red;
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left: 230px;
+    // word-spacing: 10px;
 }

@@ -1,3 +1,7 @@
+body{
+  scroll-padding-top: 100px;
+}
+
 .animated {
     -webkit-animation-duration: 1s;
             animation-duration: 1s;
@@ -14,7 +18,273 @@
     -webkit-animation-duration: 2s;
             animation-duration: 2s;
   }
+
+  #form-builder{
+    border-radius: 10px;
+    height: fit-content;
+    width: fit-content;
+    border: 2px solid black;
+    margin-top: 200px;
+    margin-left: 15%;
+    // padding: 30px;
+    padding-top: 0px;
+    background-color: rgba(233, 160, 24, 0.726);
+    float: left;
+    margin-bottom: 200px;
+  }
+
+  #row{
+    margin-top: 350px;
+    margin-left: 60%;
+  }
+
+  .checkbox{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    vertical-align: middle;
+    margin-left: -500px;
+    word-wrap: break-word;
+    line-height: inherit;
+    padding-bottom: 0px;
+  }
+
+  #panel-title {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 0px;
+    margin-bottom: 60px;
+    padding: 15px;
+    background-color: #075e86;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .form-header{
+    padding-left: 30px;
+    padding-right: 45px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  #Header{
+    height: 30px;
+    // margin-top: 45px;
+    width: 400px;
+    margin-right: 30px;
+  }
+
+  .help-block{
+    margin-left: 145px;
+    margin-top: 8px;
+    color: red;
+    font-weight: bolder;
+  }
+
+  .formColor{
+    padding-left: 27px;
+    padding-right: 10px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  #formColor{
+    height: 35px;
+    margin-top: 45px;
+    width: 410px;
+    margin-right: 30px;
+  }
+
+  input[type="submit"]{
+    margin-left: 43%;    
+    margin-top: 45px;
+    width: 100px;
+    height: 30px;
+    background-color: #075e86;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  #panel-primary1{
+    border-radius: 10px;
+    height: fit-content;
+    width: fit-content;
+    border: 2px solid black;
+    margin-top: 200px;
+    margin-left: 15%;
+    // padding: 30px;
+    padding-top: 0px;
+    background-color: rgba(233, 160, 24, 0.726);
+    float: left;
+    margin-bottom: 200px;
+  }
+
+  #panel-title2 {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 0px;
+    margin-bottom: 60px;
+    padding: 15px;
+    background-color: #075e86;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .container{
+    display: inline
+  }
+
+  .newField-name {
+    padding-left: 30px;
+    padding-right: 45px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  #newField-name{
+    height: 30px;
+    width: 400px;
+    margin-right: 30px;
+  }
+
+  #formGroup{
+    margin-left: 180px;
+    margin-top: 8px;
+    margin-bottom: 45px;
+    color: red;
+    font-weight: bolder;
+  }
+
+  .newField-order {
+    padding-left: 30px;
+    padding-right: 25px;
+    margin-bottom: 45px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  #newField-order {
+    height: 30px;
+    width: 400px;
+    margin-right: 30px;
+    margin-bottom: 45px;
+  }
+
+  .newField-type {
+    padding-left: 30px;
+    padding-right: 55px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+    margin-bottom: 45px;
+  }
+
+  #newField-type {
+    height: 35px;
+    width: 410px;
+    margin-right: 30px;
+    margin-bottom: 45px;
+  }
+
+  .newField-placeholder {
+    padding-left: 30px;
+    padding-right: 43px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  #newField-placeholder {
+    height: 30px;
+    width: 400px;
+    margin-right: 30px;
+  }
+
+  #create-new-field{
+    margin-top: 45px;
+    margin-bottom: 40px;
+    margin-left: 30%;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  #addOptionButton{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0%;
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #075e86;
+  }
+
+  #removeButton{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0%;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #075e86;
+  }
+
+  .formDetails{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bolder;
+  }
+
+  .label{
+    padding-left: 50px;
+    padding-right: 60px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  .input{
+    width: 400px;
+    height: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 35px;
+  }
   
+  .opt{
+    margin-left: -170px
+  }
+
+  #save-template-body{
+    margin-bottom: 200px;
+  }
+
+  #save-template{
+    // margin-top: 5px;
+    width: 200px;
+    // height: 50px;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: orange;
+  }
+
+  // #formPreview{
+  //   float: left;
+  //   margin-left: 60px
+  // }
+
+  // #JSON{
+  //   margin-top: 600px;
+  // }
+
   @-webkit-keyframes bounce {
     0%, 20%, 53%, 80%, 100% {
       -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
