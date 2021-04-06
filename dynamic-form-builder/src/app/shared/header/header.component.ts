@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/auth/shared/services/shared/shared.service';
 // import { Subscription } from 'rxjs';
 // import { SharedService } from 'src/app/auth/shared/services/shared/shared.service';
 
@@ -9,26 +10,32 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   subscription: any;
+  isLoggedIn: boolean = true;
   constructor(
-    // private sharedService: SharedService 
+    private sharedService: SharedService
   ) { }
   // isSessionSet: any;
   // isSessionSet = false;
   ngOnInit(): void {
-    // this.subscription = this.sharedService.isLoggedIn().subscribe(newVal => {
-    //   console.log('newValnewValnewVal', newVal)
-    //   this.isSessionSet = newVal;
-    //   console.log(this.isSessionSet)
-    // })
+    if (sessionStorage.getItem('isLoggedin') != null) {
+      this.isLoggedIn = true
+    }
+    else {
+      this.isLoggedIn = false
+    }
+    this.subscription = this.sharedService.username.subscribe(newVal => {
+      this.isLoggedIn = newVal
+    })
   }
 
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   logout() {
-    // sessionStorage.clear();
-    // this.sharedService.setSession(false);
+    this.isLoggedIn = false
+    sessionStorage.clear();
+    this.sharedService.setSession(false);
   }
 
 }

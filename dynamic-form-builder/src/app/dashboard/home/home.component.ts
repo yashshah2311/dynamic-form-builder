@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
     // }
     //  return 'https' + '://' + 'qa-hire.scikey.ai' + ':' + '443' + param1.apiPrefix + param2;
     return 'http://' + host + ':4200/';
-    // console.log(data);
+    
     // return this.httpClient.get(this.baseURL + 'show-template/' + userName + '/repos?'+'page='+PageNo+'&sort='+SortOn);
   }
 }

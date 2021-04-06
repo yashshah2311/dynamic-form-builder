@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HttpModule, Http } from '@angular/http';
+import { SharedService } from './auth/shared/services/shared/shared.service';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { HttpModule, Http } from '@angular/http';
     ReactiveFormsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

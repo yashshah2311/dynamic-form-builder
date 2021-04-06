@@ -17,7 +17,7 @@ export class FormBuilderService {
     getUrlLink = getUrlLink.replace(':userid', userId);
     return this.http.post(getUrlLink, body)
       .map((response: any) => {
-        // console.log(response.json());
+        
         return response.json();
       })
       .catch((error: any) => {
