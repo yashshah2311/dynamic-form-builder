@@ -16,7 +16,7 @@ export class ShowTemplateService {
   getTemplate(id: string) {
     let getUrlLink:string = this.sharedService.linkGeneration(environment.template, environment.template.getTemplate);
     getUrlLink = getUrlLink.replace(':templateid', id);
-    // console.log(getUrlLink)
+    
     return this._http.get(getUrlLink).map(response => {
       return response.json();
     })

@@ -35,10 +35,11 @@ export class LoginComponent {
     }
     if(this.validateEmail() && this.userForm.valid){
       this.authService.getAuthResponse(body).subscribe(async (response: any) => {
-        // console.log(response);
+        
         if (response && response.error && response.error.length === 0) {
-          // console.log(response);
+          
           sessionStorage.setItem('userid', response.data['userid']);
+          sessionStorage.setItem('isLoggedin', "true");
           this.sharedService.setSession(true);
           // localStorage.setItem('userid', response.data['userid']);
           this.router.navigate(['/dashboard/home']);              
@@ -54,7 +55,7 @@ export class LoginComponent {
     const formData = this.userForm.value;
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(formData.email)) {
-      // console.log("---------333");
+      
       this.isEmailValid = false;
       return false;
     }

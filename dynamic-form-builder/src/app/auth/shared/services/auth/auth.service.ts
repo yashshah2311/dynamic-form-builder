@@ -23,7 +23,7 @@ export class AuthService {
     const url = this.sharedService.linkGeneration(environment.auth, environment.auth.resourcelogin)
     return this.http.post(url, body)
       .map((response: any) => {
-        // console.log(response.json());
+        
         return response.json();
       })
       .catch((error: any) => {
@@ -35,7 +35,7 @@ export class AuthService {
     const url = this.sharedService.linkGeneration(environment.auth, environment.auth.resourceRegister)
     return this.http.post(url, body)
       .map((response: any) => {
-        // console.log(response.json());
+        
         return response.json();
       })
       .catch((error: any) => {

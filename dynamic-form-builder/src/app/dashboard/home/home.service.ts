@@ -17,7 +17,7 @@ export class HomeService {
     let userId:any = sessionStorage.getItem('userid');
     let getUrlLink:string = this.sharedService.linkGeneration(environment.template, environment.template.getTemplatesByUser);
     getUrlLink = getUrlLink.replace(':userid', userId);
-    // console.log(getUrlLink)
+    
     return this._http.get(getUrlLink).map(response => {
       return response.json();
     })

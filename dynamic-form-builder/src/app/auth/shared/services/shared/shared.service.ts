@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions, ResponseContentType } from '@angular/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  private authSubject = new BehaviorSubject(false);
+  private authSubject = new Subject<boolean>();
+  username = this.authSubject.asObservable()
 
   constructor() { }
   setSession(value: any) {
-    // console.log(value)
     this.authSubject.next(value);
-  }
-  isLoggedIn() {
-    return this.authSubject.asObservable();
   }
   linkGeneration(param1: any, param2: any) {
     const host = window.location.hostname;

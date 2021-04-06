@@ -25,11 +25,11 @@ export class ShowTemplateComponent implements OnInit {
     this.showTemplateService.getTemplate(this.templateId).subscribe(async (response: any) => {        
       if (response && response.error && response.error.length === 0) {
         this.data = response.data;
-        // console.log(this.data);
+        
 
         this.formDetails = response.data['formDetails'];
         
-        // console.log(response.data['formDetails']);
+        
       }
     },
       (error: any) => {
